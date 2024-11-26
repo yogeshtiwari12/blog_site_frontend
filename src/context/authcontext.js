@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
           { withCredentials: true }
         );
         setProfile(response.data.userprofile); // Fallback to null if no userprofile
-        // console.log("User profile:", response.data);
+        console.log("User profile:", response.data.userprofile);
       } catch (error) {
         console.error("Error fetching profile:", error.message);
         setProfile(null); // Explicitly set null on error
