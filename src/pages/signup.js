@@ -24,7 +24,7 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response  = await axios.put('http://localhost:4000/routes/signup', {
+      const response  = await axios.put('https://blog-site-backend-3b1g.onrender.com/routes/signup', {
         photo,
         name,
         email,
