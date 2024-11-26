@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
     const fetchMyProfile = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:4000/routes/getmyprofile",
+          "https://blog-site-backend-3b1g.onrender.com/routes/getmyprofile",
           { withCredentials: true }
         );
         setProfile(response.data.userprofile); // Fallback to null if no userprofile
@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:4000/blogroute/getallblogs"
+          "https://blog-site-backend-3b1g.onrender.com/blogroute/getallblogs"
         );
         setBlogs(response.data || null); // Fallback to null if no blogs
       } catch (error) {
