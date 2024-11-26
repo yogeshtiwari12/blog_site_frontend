@@ -8,7 +8,7 @@ function Myprofile() {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/routes/getmyprofile', {
+                const response = await axios.get('https://blog-site-backend-3b1g.onrender.com/routes/getmyprofile', {
                     withCredentials: true,
                 });
                 setProfile(response.data.userprofile);
