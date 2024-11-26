@@ -20,7 +20,7 @@ function Navbar() {
 
   const logout = async () => {
     try {
-      const response = await axios.post('http://localhost:4000/routes/logout', {}, {
+      const response = await axios.post('https://blog-site-backend-3b1g.onrender.com/routes/logout', {}, {
         withCredentials: true,
         headers: {
           'Content-Type': 'application/json'
