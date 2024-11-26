@@ -26,60 +26,86 @@ function Trending() {
     },
   };
 
-  return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-2xl font-semibold mb-4">Trending</h1>
-      <Carousel responsive={responsive} showDots={true}>
-        {blogs && blogs.length > 0 ? (
-          blogs.slice(0, 5).map((element) => (
+  const customStyles = `
+    .react-multi-carousel-dot-list {
+      bottom: -3px;
+    }
+    .react-multi-carousel-dot button {
+      border-color: #3B82F6;
+    }
+    .react-multi-carousel-dot--active button {
+      background: #3B82F6;
+    }
+  `;
 
-            <div
-              key={element._id}
-              className="p-4 bg-white border-2 w shadow-md rounded-lg shadow-md transform  hover:shadow-xl mx-2"
-              // style={{ padding: "16px" }}
-            >
-              <Link
-              to={`/singleblog/${element._id}`}>
-                <div className="relative">
-                  <img
-                    src={element.blogimage.url}
-                    alt={element.title}
-                    className="w-full h-56 object-cover rounded-t-lg"
-                  />
-                  <div className="absolute top-4 left-4 bg-blue-500 text-white px-3 py-1 flex rounded-full text-sm">
-                    {element.category}
+  return (
+    <div className="container mx-auto px-4 py-12 max-w-7xl">
+      <style>{customStyles}</style>
+      <h1 className="text-3xl font-bold mb-8 text-gray-800 tracking-tight">
+        Trending
+      </h1>
+      <div className="pb-12"> {/* Added padding bottom for dots */}
+        <Carousel
+          responsive={responsive}
+          showDots={true}
+          infinite={true}
+          autoPlay={true}
+          autoPlaySpeed={3000}
+          removeArrowOnDeviceType={["tablet", "mobile"]}
+          className="pb-8"
+        >
+          {blogs && blogs.length > 0 ? (
+            blogs.slice(0, 5).map((element) => (
+              <div
+                key={element._id}
+                className="mx-2 bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+              >
+                <Link to={`/singleblog/${element._id}`} className="block h-full">
+                  <div className="relative">
+                    <img
+                      src={element.blogimage.url}
+                      alt={element.title}
+                      className="w-full h-64 object-cover rounded-t-xl"
+                    />
+                    <div className="absolute top-4 left-4 bg-blue-500 text-white px-4 py-1.5 rounded-full text-sm font-medium tracking-wide shadow-lg">
+                      {element.category}
+                    </div>
                   </div>
-                </div>
-                <div className="p-4 bg-gray-50 rounded-b-lg h-36 flex flex-col justify-between">
-                  <h1
-                    className="text-lg font-bold mb-2 overflow-hidden text-ellipsis transition-colors  hover:text-yellow-500"
-                   
-                  >
-                    {element.title}
-                  </h1>
-                  <div className=" flex items-center">
-                <img
-                  src={element.adminphoto}
-                  alt=""
-                  className="w-12 h-12 rounded-full border-2 border-yellow-400"
-                />
-                <div className="ml-4">
-                  <p className="text-lg font-semibold text-gray-800">
-                    {element.adminname}
-                  </p>
-                  <p className="text-xs text-gray-400">New</p>
-                </div>
+                  <div className="p-6 bg-gray-50 rounded-b-xl">
+                    <h1 className="text-xl font-bold mb-4 line-clamp-2 text-gray-800 hover:text-blue-600 transition-colors duration-300">
+                      {element.title}
+                    </h1>
+                    <div className="flex items-center">
+                      <div className="relative">
+                        <img
+                          src={element.adminphoto}
+                          alt=""
+                          className="w-12 h-12 rounded-full border-2 border-blue-400 transition-transform duration-300 hover:scale-105"
+                        />
+                      </div>
+                      <div className="ml-4">
+                        <p className="text-base font-semibold text-gray-800">
+                          {element.adminname}
+                        </p>
+                        <span className="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
+                          New
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
               </div>
-                </div>
-              </Link>
+            ))
+          ) : (
+            <div className="flex h-96 items-center justify-center w-full">
+              <div className="flex flex-col items-center space-y-4">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+                <p className="text-lg font-medium text-gray-600">Loading...</p>
+              </div>
             </div>
-          ))
-        ) : (
-          <div className="flex h-screen items-center justify-center">
-            Loading....
-          </div>
-        )}
-      </Carousel>
+          )}
+        </Carousel>
+      </div>
     </div>
   );
 }

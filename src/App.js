@@ -18,6 +18,7 @@ import Blogs from './home/blogs';
 import Cookies from 'js-cookie';
 import Singleblog from './home/singleblog';
 import Errorpage from './home/errorpage';
+import Profiles from './pages/profiles';
 
 function Layout() {
   const location = useLocation();
@@ -39,13 +40,14 @@ function Layout() {
         {hasCookie ? (
           <>
             <Route path="/myprofile" element={<Myprofile />} />
-            <Route path="/createblogs" element={<Createblogs />} />
+            <Route path="/dashboard/createblogs" element={<Createblogs />} />
             <Route path="/creators" element={<Creators />} />
             <Route path="/contactus" element={<Contact />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/updateblog/:id" element={<UpdateBlog />} />
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/singleblog/:id" element={<Singleblog/>} />
+            <Route path="/dashboard/profiles" element={<Profiles />} />
             <Route path="*" element={<Errorpage/>} />
 
           </>

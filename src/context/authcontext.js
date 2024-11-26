@@ -4,47 +4,48 @@ import axios from "axios";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [blogs, setBlogs] = useState([]);
-  const [profile, setUser] = useState([]);
+  const [blogs, setBlogs] = useState(null); // Default to null when no data
+  const [profile, setProfile] = useState(null); // Default to null when no data
 
   useEffect(() => {
-    const fetchmyprofile = async () => {
+    const fetchMyProfile = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/routes/getmyprofile',{
-          withCredentials: true,  
-        }
-      
-      );
-        setUser(response.data);
-        console.log("user profilres: " + response.data)
+        const response = await axios.get(
+          "http://localhost:4000/routes/getmyprofile",
+          { withCredentials: true }
+        );
+        setProfile(response.data.userprofile); // Fallback to null if no userprofile
+        // console.log("User profile:", response.data);
       } catch (error) {
-        console.error("Error fetching blogs", error.message);
+        console.error("Error fetching profile:", error.message);
+        setProfile(null); // Explicitly set null on error
       }
     };
 
-    fetchmyprofile()
-  }, []); 
-
+    fetchMyProfile();
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/blogroute/getallblogs');
-        setBlogs(response.data); 
+        const response = await axios.get(
+          "http://localhost:4000/blogroute/getallblogs"
+        );
+        setBlogs(response.data || null); // Fallback to null if no blogs
       } catch (error) {
-        console.error("Error fetching blogs", error.message);
+        console.error("Error fetching blogs:", error.message);
+        setBlogs(null); // Explicitly set null on error
       }
     };
 
     fetchData();
-  }, []); 
+  }, []);
 
   return (
-    <AuthContext.Provider value={{blogs,profile}}>
+    <AuthContext.Provider value={{ blogs, profile }}>
       {children}
     </AuthContext.Provider>
   );
 };
-
 
 export const useAuth = () => useContext(AuthContext);

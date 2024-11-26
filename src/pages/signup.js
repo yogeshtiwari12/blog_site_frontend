@@ -24,7 +24,7 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response  = await axios.post('http://localhost:4000/routes/signup', {
+      const response  = await axios.put('http://localhost:4000/routes/signup', {
         photo,
         name,
         email,
@@ -38,6 +38,7 @@ function SignUp() {
       withCredentials: true     }
     )
       if(response.data){
+        console.log(response.data)
        toast.success("Signup successful")
       navigate('/login')
        console.log(response.data.message)
@@ -53,6 +54,7 @@ function SignUp() {
 
       }
     } catch (error) {
+      toast.error(error.response.data.message)
       console.error('Error during signup:', error);
 
     }
@@ -74,8 +76,8 @@ function SignUp() {
             className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="" disabled>Select User Role</option>
-            <option value="user">User</option>
-            <option value="admin">Admin</option>
+            <option value="user">user</option>
+            <option value="admin">admin</option>
           </select>
 
           <input
