@@ -18,7 +18,7 @@ import Blogs from './home/blogs';
 import Singleblog from './home/singleblog';
 import Errorpage from './home/errorpage';
 import Profiles from './pages/profiles';
-import { useAuth } from '../context/authcontext'; // Assuming `useAuth` is defined in your project
+import { useAuth } from './context/authcontext'; // Assuming `useAuth` is defined in your project
 
 function Layout() {
   const location = useLocation();
