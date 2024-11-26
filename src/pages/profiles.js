@@ -10,7 +10,7 @@ const Profiles = () => {
   useEffect(() => {
     const fetchProfiles = async () => {
       try {
-        const response = await fetch('http://localhost:4000/routes/getalladminanduser', {
+        const response = await fetch('https://blog-site-backend-3b1g.onrender.com/routes/getalladminanduser', {
           credentials: 'include'
         });
         const data = await response.json();
