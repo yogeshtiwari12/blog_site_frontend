@@ -15,17 +15,17 @@ import Createblogs from './dashboard/createblogs';
 import Logout from './pages/logout';
 import UpdateBlog from './pages/update';
 import Blogs from './home/blogs';
-import Cookies from 'js-cookie';
 import Singleblog from './home/singleblog';
 import Errorpage from './home/errorpage';
 import Profiles from './pages/profiles';
+import { useAuth } from './hooks/useAuth'; // Assuming `useAuth` is defined in your project
 
 function Layout() {
   const location = useLocation();
-  const hasCookie = !!Cookies.get('token');
-  const hideNavbarFooter = ["/dashboard", "/login", "/register","*"].includes(
-    location.pathname
-  );
+  const { profile } = useAuth(); // Retrieve the authentication status and profile
+  const isAuthenticated = !!profile; // Check if the profile exists (user is authenticated)
+  const hideNavbarFooter = ["/dashboard", "/login", "/register", "*"].includes(location.pathname);
+
   return (
     <>
       {!hideNavbarFooter && <Navbar />}
@@ -36,8 +36,7 @@ function Layout() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 
-        
-        {hasCookie ? (
+        {isAuthenticated ? (
           <>
             <Route path="/myprofile" element={<Myprofile />} />
             <Route path="/dashboard/createblogs" element={<Createblogs />} />
@@ -46,10 +45,9 @@ function Layout() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/updateblog/:id" element={<UpdateBlog />} />
             <Route path="/blogs" element={<Blogs />} />
-            <Route path="/singleblog/:id" element={<Singleblog/>} />
+            <Route path="/singleblog/:id" element={<Singleblog />} />
             <Route path="/dashboard/profiles" element={<Profiles />} />
-            <Route path="*" element={<Errorpage/>} />
-
+            <Route path="*" element={<Errorpage />} />
           </>
         ) : (
           <>
