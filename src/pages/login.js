@@ -15,7 +15,7 @@ function LoginPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/routes/login', {
+      const response = await axios.post('https://blog-site-backend-3b1g.onrender.com/routes/login', {
         email,
         password,
         role,
