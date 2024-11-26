@@ -162,11 +162,13 @@ function Navbar() {
                 Contact
               </Link>
             </li>
-            {profile?.userprofile?.role === 'admin' && (
+       
+       <div className="flex justify-between">
+            {profile?.role === 'admin' && (
               <li>
                 <Link
                   to="/dashboard"
-                  className="block rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-400 text-center"
+                  className="rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-400"
                 >
                   Dashboard
                 </Link>
@@ -190,6 +192,8 @@ function Navbar() {
               )}
 
             </li>
+              </div>
+              
           </ul>
         </div>
       )}
