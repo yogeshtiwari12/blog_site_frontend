@@ -27,7 +27,7 @@ function Createblogs() {
     }
 
     try {
-      const response = await axios.post('http://localhost:4000/blogroute/createblog', formData, {
+      const response = await axios.post('https://blog-site-backend-3b1g.onrender.com/blogroute/createblog', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
         withCredentials: true,
       });
