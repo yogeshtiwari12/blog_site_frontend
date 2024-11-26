@@ -9,7 +9,7 @@ function Createblogs() {
 
   const deleteblog = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/blogroute/delete/${id}`, {
+      await axios.delete(`https://blog-site-backend-3b1g.onrender.com/blogroute/delete/${id}`, {
         withCredentials: true,
       });
     
@@ -22,7 +22,7 @@ function Createblogs() {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/blogroute/getmyblogs', {
+        const response = await axios.get('https://blog-site-backend-3b1g.onrender.com/blogroute/getmyblogs', {
           withCredentials: true,
         });
         setBlogs(response.data);
