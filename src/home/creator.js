@@ -8,7 +8,7 @@ function Creator() {
     useEffect(() => {
         const fetchAdmins = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/routes/getalladmin');
+                const response = await axios.get('https://blog-site-backend-3b1g.onrender.com/routes/getalladmin');
                 setAdmins(response.data.adminusers);
             } catch (error) {
                 console.error("Error fetching admin data: ", error);
