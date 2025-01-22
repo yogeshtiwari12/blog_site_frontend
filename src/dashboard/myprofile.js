@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FaEnvelope, FaPhone, FaGraduationCap } from 'react-icons/fa';
+import { comon_url } from '../pages/commonroutes.js';
 
 function Myprofile() {
     const [profile, setProfile] = useState(null);
@@ -8,7 +9,7 @@ function Myprofile() {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/routes/getmyprofile', {
+                const response = await axios.get(`${comon_url}/routes/getmyprofile`, {
                     withCredentials: true,
                 });
                 setProfile(response.data.userprofile);

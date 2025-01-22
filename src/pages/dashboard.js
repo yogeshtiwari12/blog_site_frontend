@@ -2,14 +2,16 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Sidebar from './sidebar';
 import { useAuth } from '../context/authcontext';
+import { comon_url } from './commonroutes.js';
 
 function Createblogs() {
   const { profile } = useAuth();
   const [blogs, setBlogs] = useState([]);
+  console.log(blogs)
 
   const deleteblog = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/blogroute/delete/${id}`, {
+      await axios.delete(`${comon_url}/blogroute/delete/${id}`, {
         withCredentials: true,
       });
     
@@ -22,9 +24,10 @@ function Createblogs() {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/blogroute/getmyblogs', {
+        const response = await axios.get(`${comon_url}/blogroute/getmyblogs`, {
           withCredentials: true,
         });
+        console.log("blogs data",response.data);
         setBlogs(response.data);
       } catch (error) {
         console.error('Error fetching blogs:', error);
@@ -58,7 +61,8 @@ function Createblogs() {
                 <p className="text-sm text-gray-600 mb-4">{blog.about}</p>
                 <div className="flex space-x-4">
                   <a
-                    href={`/updateblog/${blog._id}`}
+                    href={`/updateblog/${blog?._id}`}
+                    
                     className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-400"
                   >
                     Update

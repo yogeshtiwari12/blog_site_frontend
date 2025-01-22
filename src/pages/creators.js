@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { comon_url } from './commonroutes.js';
 
 
 function Creators() {
@@ -10,7 +11,9 @@ function Creators() {
     useEffect(() => {
         const fetchAdmins = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/routes/getalladmin');
+                const response = await axios.get(`${comon_url}/routes/getalladmin`,{
+                    withCredentials: true,
+                });
                 setAdmins(response.data.adminusers);
             } catch (error) {
                 console.error("Error fetching admin data: ", error);

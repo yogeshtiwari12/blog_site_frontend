@@ -5,13 +5,14 @@ import Cookies from 'js-cookie';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/authcontext';
 import { Home, Edit, User, LogOut, LayoutDashboard} from 'lucide-react';
+import { comon_url } from './commonroutes';
 
 function Sidebar() {
     const { profile } = useAuth();
 
     const logout = async () => {
         try {
-            const response = await axios.post('http://localhost:4000/routes/logout', {}, {
+            const response = await axios.post(`${comon_url}/routes/logout`, {}, {
                 withCredentials: true,
             });
 

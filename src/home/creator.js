@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { comon_url } from '../pages/commonroutes.js';
 
 function Creator() {
     const [admins, setAdmins] = useState([]);
@@ -8,7 +9,9 @@ function Creator() {
     useEffect(() => {
         const fetchAdmins = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/routes/getalladmin');
+                const response = await axios.get(`${comon_url}/routes/getalladmin`,{
+                    withCredentials: true
+                });
                 setAdmins(response.data.adminusers);
             } catch (error) {
                 console.error("Error fetching admin data: ", error);

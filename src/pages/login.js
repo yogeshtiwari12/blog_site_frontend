@@ -2,23 +2,23 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import toast from 'react-hot-toast';
+import toast from 'react-hot-toast'
+import { comon_url } from './commonroutes.js';
 
 
 
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/routes/login', {
+      const response = await axios.post(`${comon_url}/routes/login`, {
         email,
-        password,
-        role,
+        password
+       
       }, {
         withCredentials: true,
       });
@@ -37,7 +37,6 @@ function LoginPage() {
 
         setEmail('');
         setPassword('');
-        setRole('');
       }
     } catch (error) {
       toast.error(error.response.data.message||"Invalid credentials")
@@ -70,19 +69,7 @@ function LoginPage() {
             value={password}
             className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          <select
-            id="userRole"
-            name="userRole"
-            onChange={(e) => setRole(e.target.value)}
-            value={role}
-            className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            <option value="" disabled>
-              Select User Role
-            </option>
-            <option value="user">user</option>
-            <option value="admin">admin</option>
-          </select>
+       
           <button
             type="submit"
             className="w-full bg-blue-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-400"

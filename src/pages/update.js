@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { comon_url } from './commonroutes.js';
 
 function UpdateBlog() {
     const { id } = useParams(); 
@@ -14,7 +15,7 @@ function UpdateBlog() {
     useEffect(() => {
         const fetchBlog = async () => {
             try {
-                const response = await axios.get(`http://localhost:4000/blogroute/getsingleblog/${id}`, {
+                const response = await axios.get(`${comon_url}/blogroute/getsingleblog/${id}`, {
                     withCredentials: true,
                 });
                 const { title, category, about } = response.data;
@@ -39,7 +40,7 @@ function UpdateBlog() {
         formData.append('about', about);
 
         try {
-            const response = await axios.put(`http://localhost:4000/blogroute/update/${id}`, formData, {
+            const response = await axios.put(`${comon_url}/blogroute/update/${id}`, formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
                 withCredentials: true,
             });

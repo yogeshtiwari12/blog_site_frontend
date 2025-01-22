@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
+import { comon_url } from '../pages/commonroutes.js';
 
 function Createblogs() {
   const [blogimage, setblogimage] = useState('');
@@ -27,7 +28,7 @@ function Createblogs() {
     }
 
     try {
-      const response = await axios.post('http://localhost:4000/blogroute/createblog', formData, {
+      const response = await axios.post(`${comon_url}/blogroute/createblog`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
         withCredentials: true,
       });

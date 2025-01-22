@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useAuth } from '../context/authcontext';
 import swal from 'sweetalert';
 import { useNavigate } from 'react-router-dom';
+import { comon_url } from '../pages/commonroutes.js';
 
 
 function Navbar() {
@@ -20,7 +21,7 @@ function Navbar() {
 
   const logout = async () => {
     try {
-      const response = await axios.post('http://localhost:4000/routes/logout', {}, {
+      const response = await axios.post(`${comon_url}/routes/logout`, {}, {
         withCredentials: true,
         headers: {
           'Content-Type': 'application/json'
@@ -162,11 +163,12 @@ function Navbar() {
                 Contact
               </Link>
             </li>
-            {profile?.userprofile?.role === 'admin' && (
+            <div className="flex justify-between">
+            {profile?.role === 'admin' && (
               <li>
                 <Link
                   to="/dashboard"
-                  className="block rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-400 text-center"
+                  className="rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-400"
                 >
                   Dashboard
                 </Link>
@@ -190,6 +192,7 @@ function Navbar() {
               )}
 
             </li>
+              </div>
           </ul>
         </div>
       )}

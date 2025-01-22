@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Mail, Phone, GraduationCap, Search, MapPin, Briefcase } from 'lucide-react';
+import { comon_url } from './commonroutes.js';
 
 const Profiles = () => {
   const [profiles, setProfiles] = useState([]);
@@ -10,7 +11,7 @@ const Profiles = () => {
   useEffect(() => {
     const fetchProfiles = async () => {
       try {
-        const response = await fetch('http://localhost:4000/routes/getalladminanduser', {
+        const response = await fetch(`${comon_url}/routes/getalladminanduser`, {
           credentials: 'include'
         });
         const data = await response.json();

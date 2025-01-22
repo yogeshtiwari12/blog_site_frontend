@@ -6,7 +6,7 @@ import 'react-multi-carousel/lib/styles.css';
 
 function Devotional() {
     const { blogs } = useAuth();
-    console.log("blogs avd ", blogs)
+    // console.log("blogs avd ", blogs)
 
     const filteredBlogs = blogs? blogs.filter(blog => blog.category === 'devotional'):[];
 

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { comon_url } from './commonroutes.js';
 
 function SignUp() {
   const [photo, setphoto] = useState('');
@@ -24,7 +25,7 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response  = await axios.put('http://localhost:4000/routes/signup', {
+      const response  = await axios.put(`${comon_url}/routes/signup`, {
         photo,
         name,
         email,
