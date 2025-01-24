@@ -15,7 +15,7 @@ function Hero() {
     <div className="container mx-auto px-4 py-16 max-w-7xl mt-4">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {blogs && blogs.length > 0 ? (
-          blogs.slice(0, 4).map((element) => (
+          blogs.map((element) => (
             <Link
               to={`/singleblog/${element._id}`}
               key={element._id}
