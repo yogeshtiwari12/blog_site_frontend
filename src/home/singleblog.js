@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { comon_url } from '../pages/commonroutes.js';
 
 const SingleBlog = () => {
   const { id } = useParams();
@@ -10,7 +11,9 @@ const SingleBlog = () => {
     const fetchBlog = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/blogroute/getsingleblog/${id}`
+          `${comon_url}/blogroute/getsingleblog/${id}`,{
+            withCredentials:true
+          }
         );
         setBlogs(response.data);
       } catch (error) {

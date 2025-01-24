@@ -10,8 +10,7 @@ import { comon_url } from '../pages/commonroutes.js';
 
 function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { profile } = useAuth();  // Access profile from AuthContext
-  // console.log("navbar", profile);
+  const { profile } = useAuth();  
 
   const navigate = useNavigate()
 
@@ -49,8 +48,8 @@ function Navbar() {
   };
 
   return (
-    <div className="relative w-full bg-white shadow-lg">
-      <div className="mx-auto flex max-w-8xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+    <div className="relative w-full shadow-lg ">
+      <div className="  mx-auto  flex max-w-8xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8 fixed top-0 left-0 right-0 z-50 bg-blue-100">
 
         <div className="text-md font-bold text-gray-900 text-2xl">
           <h3>Focus<span className="text-2xl text-blue-500">Craft</span></h3>

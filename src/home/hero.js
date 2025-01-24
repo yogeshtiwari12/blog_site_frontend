@@ -12,34 +12,35 @@ function Hero() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-16 max-w-7xl">
+    <div className="container mx-auto px-4 py-16 max-w-7xl mt-4">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {blogs && blogs.length > 0 ? (
           blogs.slice(0, 4).map((element) => (
             <Link
               to={`/singleblog/${element._id}`}
               key={element._id}
-              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300"
+              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
             >
               <div className="relative">
-                <img
-                  src={element.blogimage.url}
-                  alt=""
-                  className="w-full h-72 object-cover transform group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
-                
-                {/* Category Badge - Top Left */}
-                <div className="absolute top-4 left-4">
-                  <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-medium bg-white/20 backdrop-blur-sm text-white border border-white/30">
-                    {element.category || 'Technology'}
-                  </span>
+                {/* Image on Top */}
+                <div className="relative h-72 overflow-hidden">
+                  <img
+                    src={element.blogimage.url}
+                    alt=""
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                  />
+                  
+                  {/* Category Badge - Top Left */}
+                  <div className="absolute top-4 left-4">
+                    <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-medium bg-white/20 backdrop-blur-sm text-white border border-white/30">
+                      {element.category || 'Technology'}
+                    </span>
+                  </div>
                 </div>
 
-                {/* Read Time Badge - Top Right */}
-            
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <h1 className="text-white text-xl font-bold leading-tight line-clamp-2 group-hover:text-blue-400 transition-colors duration-300 mb-4">
+                {/* Content Below */}
+                <div className="p-6">
+                  <h1 className="text-xl font-bold leading-tight line-clamp-2 text-gray-800 group-hover:text-blue-600 transition-colors duration-300 mb-4">
                     {element.title}
                   </h1>
                   
@@ -51,14 +52,13 @@ function Hero() {
                           alt=""
                           className="w-10 h-10 rounded-full border-2 border-blue-400 transform group-hover:scale-110 transition-transform duration-300"
                         />
-                        {/* <div className="absolute -bottom-1 -right-1 h-4 w-4 bg-gradient-to-tr from-blue-500 to-blue-400 rounded-full border-2 border-white"></div> */}
                       </div>
                       <div>
-                        <p className="text-white font-medium text-sm group-hover:text-blue-400 transition-colors duration-300">
+                        <p className="text-gray-800 font-medium text-sm group-hover:text-blue-600 transition-colors duration-300">
                           {element.adminname}
                         </p>
                         {/* Date with icon */}
-                        <div className="flex items-center text-gray-300 text-xs">
+                        <div className="flex items-center text-gray-500 text-xs">
                           <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                           </svg>
@@ -68,7 +68,7 @@ function Hero() {
                     </div>
                     
                     {/* View Count */}
-                    <div className="flex items-center text-gray-300 text-sm">
+                    <div className="flex items-center text-gray-500 text-sm">
                       <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />

@@ -12,19 +12,18 @@ import Creators from "./pages/creators";
 import { Toaster } from "react-hot-toast";
 import Myprofile from "./dashboard/myprofile";
 import Createblogs from "./dashboard/createblogs";
-import Logout from "./pages/logout";
-import UpdateBlog from "./pages/update";
 import Blogs from "./home/blogs";
 import Singleblog from "./home/singleblog";
 import Errorpage from "./home/errorpage";
 import Profiles from "./pages/profiles";
 import { useAuth } from "./context/authcontext.js";
+import Loading from "./pages/loading.js";
 
 function Layout() {
   const location = useLocation();
   const { profile, loading, ispprofile } = useAuth();
 
-  const isAuthenticated = !!profile ;
+  const isAuthenticated = !!profile && ispprofile ;
 
   const hideNavbarFooter =
     location.pathname.startsWith("/dashboard") ||
@@ -34,13 +33,13 @@ function Layout() {
 
 
   if (loading) {
-    return <div>Loading...</div>; 
+    return <Loading/>; 
   }
   // console.log(profile,ispprofile,loading)
 
   return (
     <>
-      {!hideNavbarFooter && <Navbar />}
+      {!hideNavbarFooter && <Navbar/>}
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -51,12 +50,11 @@ function Layout() {
         {/* Protected Routes */}
         {isAuthenticated ? (
           <>
-            <Route path="/myprofile" element={<Myprofile />} />
+            <Route path="/myprofile" element={<Myprofile /> }  />
             <Route path="/dashboard/createblogs" element={<Createblogs />} />
             <Route path="/creators" element={<Creators />} />
             <Route path="/contactus" element={<Contact />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/updateblog/:id" element={<UpdateBlog />} />
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/singleblog/:id" element={<Singleblog />} />
             <Route path="/dashboard/profiles" element={<Profiles />} />

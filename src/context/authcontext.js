@@ -9,12 +9,12 @@ export const AuthProvider = ({ children }) => {
   const [profile, setProfile] = useState(null); // User profile state
   const [loading, setLoading] = useState(true); // Loading state for authentication
   const [ispprofile, setIspprofile] = useState(false); // Boolean for profile availability
-  console.log(ispprofile)
+  // console.log(ispprofile)
 
   useEffect(() => {
     const fetchMyProfile = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/routes/getmyprofile`, {
+        const response = await axios.get(`${comon_url}/routes/getmyprofile`, {
           withCredentials: true,
         });
         if (response.status === 200 && response.data.userprofile) {
@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
           setIspprofile(true);
         }
       } catch (error) {
-        console.error("Error fetching profile:", error.message);
+        // console.error("Error fetching profile:", error.message);
         setProfile(null); 
         setIspprofile(false);
       } finally {
@@ -31,6 +31,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     fetchMyProfile();
+    
   }, []);
 
   useEffect(() => {

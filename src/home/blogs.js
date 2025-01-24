@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 
 function Blogs() {
     const { blogs } = useAuth();
-    console.log("blogs avd ", blogs);
+    // console.log("blogs avd ", blogs);
 
   
     return (
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto px-4 py-8 mt-10">
             <h1 className="text-3xl font-extrabold text-center text-blue-500  mb-8">Blogs</h1>
             {blogs.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">

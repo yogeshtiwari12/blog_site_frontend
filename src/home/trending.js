@@ -31,10 +31,10 @@ function Trending() {
       bottom: -3px;
     }
     .react-multi-carousel-dot button {
-      border-color: #3B82F6;
+      border-color:blue-100;
     }
     .react-multi-carousel-dot--active button {
-      background: #3B82F6;
+      background:blue-100;
     }
   `;
 
@@ -67,7 +67,7 @@ function Trending() {
                       alt={element.title}
                       className="w-full h-64 object-cover rounded-t-xl"
                     />
-                    <div className="absolute top-4 left-4 bg-blue-500 text-white px-4 py-1.5 rounded-full text-sm font-medium tracking-wide shadow-lg">
+                    <div className="absolute top-4 left-4 bg-blue-400 text-gray-200 px-4 py-1.5 rounded-full text-sm font-medium tracking-wide shadow-lg">
                       {element.category}
                     </div>
                   </div>

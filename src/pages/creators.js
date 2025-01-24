@@ -25,14 +25,14 @@ function Creators() {
 
     return (
         <div className="container mx-auto px-4 py-8">
-            <h1 className="text-3xl font-bold text-center mb-8">Meet Our Creators</h1>
+            <h1 className="text-3xl font-bold text-center mb-8">Meet Our Creators </h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                 {admins.length > 0 ? (
                     admins.map((admin) => (
                         <div key={admin._id} className="bg-white shadow-lg rounded-lg p-6 text-center">
                             <div className="relative">
                                 <img
-                                    src={admin.photo.url} // Replace with the correct image field
+                                    src={admin.photo.url}
                                     alt={admin.name}
                                     className="w-32 h-32 object-cover rounded-full mx-auto border-4 border-gray-300"
                                 />

@@ -25,7 +25,7 @@ const teamMembers = [
 
 function AboutPage() {
   return (
-    <div className="bg-gray-100 min-h-screen py-12 px-4 bg-gradient-to-br from-blue-100 to-blue-300 ">
+    <div className="bg-gray-100 min-h-screen py-12 px-4 bg-gradient-to-br from-blue-100 to-blue-300 mt-12">
       <div className="container mx-auto">
         <h1 className="text-4xl font-bold text-center text-blue-600 mb-12">Meet Our Team</h1>
         <div className="flex flex-wrap justify-center gap-8">

@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Cookies from 'js-cookie';
-import toast from 'react-hot-toast'
-import { comon_url } from './commonroutes.js';
-
+import toast from 'react-hot-toast';
+import { comon_url } from './commonroutes';
+import Loading from './loading';
 
 
 function LoginPage() {
@@ -14,33 +13,36 @@ function LoginPage() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!email || !password) {
+      toast.error("Please fill in both fields");
+      return;
+    }
+
     try {
       const response = await axios.post(`${comon_url}/routes/login`, {
         email,
-        password
-       
+        password,
       }, {
         withCredentials: true,
       });
 
-      if (response.status === 200) {
-       toast.success("login success")
-       
-       setTimeout(() => {
-        navigate('/');
-        window.location.reload();
-      }, 1000); 
-
-        const token = Cookies.get('token');
-        console.log(token);
+      if (response.data) {
+        <Loading/>
+        toast.success("Login successful");
         console.log(response.data);
+
+     
+        setTimeout(() => {
+          navigate('/');
+          window.location.reload();
+        }, 1000); 
 
         setEmail('');
         setPassword('');
       }
     } catch (error) {
-      toast.error(error.response.data.message||"Invalid credentials")
-      console.error(error.message);
+      toast.error(error?.response?.data?.message);
+      console.error(error);
     }
   };
 

@@ -2,7 +2,8 @@ import React from 'react';
 
 function Footer() {
   return (
-    <div>
+    <div className="bg-gray-100">
+      
       <section className="relative overflow-hidden py-10">
         <div className="relative z-10 mx-auto max-w-7xl px-4">
           <div className="flex flex-wrap -m-6">
