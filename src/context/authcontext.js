@@ -5,11 +5,10 @@ import { comon_url } from "../pages/commonroutes.js";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [blogs, setBlogs] = useState(null); // Blog state
-  const [profile, setProfile] = useState(null); // User profile state
-  const [loading, setLoading] = useState(true); // Loading state for authentication
-  const [ispprofile, setIspprofile] = useState(false); // Boolean for profile availability
-  // console.log(ispprofile)
+  const [blogs, setBlogs] = useState(null); 
+  const [profile, setProfile] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [ispprofile, setIspprofile] = useState(false); 
 
   useEffect(() => {
     const fetchMyProfile = async () => {
@@ -22,11 +21,11 @@ export const AuthProvider = ({ children }) => {
           setIspprofile(true);
         }
       } catch (error) {
-        // console.error("Error fetching profile:", error.message);
+   
         setProfile(null); 
         setIspprofile(false);
       } finally {
-        setLoading(false); // Set loading to false once finished
+        setLoading(false);
       }
     };
 
@@ -41,10 +40,10 @@ export const AuthProvider = ({ children }) => {
           `${comon_url}/blogroute/getallblogs`,
           { withCredentials: true }
         );
-        setBlogs(response.data || null); // Fallback to null if no blogs
+        setBlogs(response.data || null);
       } catch (error) {
         console.error("Error fetching blogs:", error.message);
-        setBlogs(null); // Explicitly set null on error
+        setBlogs(null);
       }
     };
 

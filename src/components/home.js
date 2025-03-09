@@ -8,7 +8,7 @@ import Creator from '../home/creator';
 function Home() {
 
   return (
-    <div>
+    <div >
      <Hero/>
      <Trending/>
      <Devotional/>

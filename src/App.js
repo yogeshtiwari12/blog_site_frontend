@@ -17,13 +17,13 @@ import Singleblog from "./home/singleblog";
 import Errorpage from "./home/errorpage";
 import Profiles from "./pages/profiles";
 import { useAuth } from "./context/authcontext.js";
-import Loading from "./pages/loading.js";
 
 function Layout() {
   const location = useLocation();
   const { profile, loading, ispprofile } = useAuth();
-
+  
   const isAuthenticated = !!profile && ispprofile ;
+  console.log("auth",isAuthenticated)
 
   const hideNavbarFooter =
     location.pathname.startsWith("/dashboard") ||
@@ -32,10 +32,8 @@ function Layout() {
     location.pathname === "/logout";
 
 
-  if (loading) {
-    return <Loading/>; 
-  }
-  // console.log(profile,ispprofile,loading)
+
+
 
   return (
     <>
@@ -46,13 +44,13 @@ function Layout() {
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/singleblog/:id" element={<Singleblog />} />
 
-        {/* Protected Routes */}
+
         {isAuthenticated ? (
           <>
             <Route path="/myprofile" element={<Myprofile /> }  />
             <Route path="/dashboard/createblogs" element={<Createblogs />} />
-            <Route path="/creators" element={<Creators />} />
             <Route path="/contactus" element={<Contact />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/blogs" element={<Blogs />} />
@@ -60,7 +58,6 @@ function Layout() {
             <Route path="/dashboard/profiles" element={<Profiles />} />
           </>
         ) : (
-          // Redirect unauthenticated users to login
           <>
             <Route path="/myprofile" element={<Navigate to="/login" />} />
             <Route path="/dashboard/createblogs" element={<Navigate to="/login" />} />

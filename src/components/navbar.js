@@ -67,11 +67,7 @@ function Navbar() {
                 Blogs
               </Link>
             </li>
-            <li>
-              <Link to="/creaters" className="text-sm font-semibold text-gray-500 hover:text-blue-400 duration-260">
-                Creator
-              </Link>
-            </li>
+           
             <li>
               <Link to="/about" className="text-sm font-semibold text-gray-500 hover:text-blue-400 duration-260">
                 About
@@ -147,11 +143,7 @@ function Navbar() {
                 Blogs
               </Link>
             </li>
-            <li>
-              <Link to="/creaters" className="block text-gray-500 hover:text-blue-400 text-center py-2">
-                Creator
-              </Link>
-            </li>
+          
             <li>
               <Link to="/" className="block text-gray-500 hover:text-blue-400 text-center py-2">
                 About

@@ -32,7 +32,7 @@ const SingleBlog = () => {
     <div>
       <div>
         {blogs && (
-          <section className="container mx-auto p-4">
+          <section className="container mx-auto p-4 mt-24">
             <div className="text-blue-500 uppercase text-xs font-bold mb-4">
               {blogs.category}
             </div>
