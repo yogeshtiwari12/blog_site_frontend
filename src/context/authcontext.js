@@ -12,6 +12,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchMyProfile = async () => {
+      setLoading(true);
       try {
         const response = await axios.get(`${comon_url}/routes/getmyprofile`, {
           withCredentials: true,
@@ -24,6 +25,7 @@ export const AuthProvider = ({ children }) => {
    
         setProfile(null); 
         setIspprofile(false);
+        setLoading(false);
       } finally {
         setLoading(false);
       }

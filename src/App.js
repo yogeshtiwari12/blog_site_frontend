@@ -8,7 +8,6 @@ import About from "./pages/about";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
 import Dashboard from "./pages/dashboard";
-import Creators from "./pages/creators";
 import { Toaster } from "react-hot-toast";
 import Myprofile from "./dashboard/myprofile";
 import Createblogs from "./dashboard/createblogs";
@@ -20,9 +19,9 @@ import { useAuth } from "./context/authcontext.js";
 
 function Layout() {
   const location = useLocation();
-  const { profile, loading, ispprofile } = useAuth();
+  const { profile, loading, ispprofile } =  useAuth();
   
-  const isAuthenticated = !!profile && ispprofile ;
+  const isAuthenticated = !!profile && ispprofile && !loading;
   console.log("auth",isAuthenticated)
 
   const hideNavbarFooter =
